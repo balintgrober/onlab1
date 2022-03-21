@@ -26,6 +26,9 @@ public class DynamoDBConfig {
     @Value("${aws.secretkey}")
     private String amazonSecretKey;
 
+    @Value("${aws.endpoint}")
+    private String amazonDynamoDBEndpoint;
+
     public AWSCredentialsProvider awsCredentialsProvider() {
         return new AWSStaticCredentialsProvider(amazonAWSCredentials());
     }
