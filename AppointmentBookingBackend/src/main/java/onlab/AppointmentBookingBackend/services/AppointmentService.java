@@ -3,10 +3,12 @@ package onlab.AppointmentBookingBackend.services;
 import onlab.AppointmentBookingBackend.models.Appointment;
 import onlab.AppointmentBookingBackend.repositories.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class AppointmentService {
 
     @Autowired
