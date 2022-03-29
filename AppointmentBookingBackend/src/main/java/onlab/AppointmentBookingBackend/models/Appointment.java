@@ -12,7 +12,7 @@ import java.util.Calendar;
 public class Appointment {
 
     private String id;
-    private Calendar dateTime;
+    private long dateTime;
     private String companyId;
     private String userId;
 
@@ -27,11 +27,11 @@ public class Appointment {
     }
 
     @DynamoDBAttribute(attributeName = "datetime")
-    public Calendar getDateTime(){
+    public long getDateTime(){
         return dateTime;
     }
 
-    public void setDateTime(Calendar dt){
+    public void setDateTime(long dt){
         this.dateTime = dt;
     }
 
