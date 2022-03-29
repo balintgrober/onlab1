@@ -6,12 +6,13 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.time.LocalDateTime;
+import java.util.Calendar;
 
 @DynamoDBTable(tableName = "appointments")
 public class Appointment {
 
     private String id;
-    private LocalDateTime dateTime;
+    private Calendar dateTime;
     private String companyId;
     private String userId;
 
@@ -26,11 +27,11 @@ public class Appointment {
     }
 
     @DynamoDBAttribute(attributeName = "datetime")
-    public LocalDateTime getDateTime(){
+    public Calendar getDateTime(){
         return dateTime;
     }
 
-    public void setDateTime(LocalDateTime dt){
+    public void setDateTime(Calendar dt){
         this.dateTime = dt;
     }
 
