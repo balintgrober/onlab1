@@ -25,12 +25,12 @@ public class UserController {
     }
 
     @PostMapping("users")
-    public void postUser(User user){
+    public void postUser(@RequestBody User user){
         userService.createUser(user);
     }
 
     @PutMapping("users/{id}")
-    public void putUser(User user){
+    public void putUser(@RequestBody User user){
         userService.updateUser(user);
     }
 

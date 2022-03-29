@@ -25,12 +25,12 @@ public class AppointmentController {
     }
 
     @PostMapping("appointments")
-    public void postAppointment(Appointment appointment){
+    public void postAppointment(@RequestBody Appointment appointment){
         appointmentService.createAppointment(appointment);
     }
 
     @PutMapping("appointments/{id}")
-    public void putAppointment(Appointment appointment){
+    public void putAppointment(@RequestBody Appointment appointment){
         appointmentService.updateAppointment(appointment);
     }
 

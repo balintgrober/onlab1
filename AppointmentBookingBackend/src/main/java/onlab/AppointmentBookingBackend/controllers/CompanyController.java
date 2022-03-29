@@ -25,12 +25,12 @@ public class CompanyController {
     }
 
     @PostMapping("companies")
-    public void postCompany(Company company){
+    public void postCompany(@RequestBody Company company){
         companyService.createCompany(company);
     }
 
     @PutMapping("companies/{id}")
-    public void putCompany(Company company){
+    public void putCompany(@RequestBody Company company){
         companyService.updateCompany(company);
     }
 

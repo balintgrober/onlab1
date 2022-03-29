@@ -52,5 +52,14 @@ public class Appointment {
         this.userId = id;
     }
 
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id='" + id + '\'' +
+                ", dateTime=" + dateTime +
+                ", companyId='" + companyId + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
 }
 
