@@ -29,7 +29,7 @@ public class UserController {
         userService.createUser(user);
     }
 
-    @PutMapping("users/{id}")
+    @PutMapping("users")
     public void putUser(@RequestBody User user){
         userService.updateUser(user);
     }
