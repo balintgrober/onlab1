@@ -21,7 +21,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public void regsterUser(User user){
+    public void regsterUser(@RequestBody User user){
         authService.registerUser(user);
     }
 
