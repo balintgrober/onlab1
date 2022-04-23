@@ -30,7 +30,7 @@ public class SESConfig {
     }
 
     @Bean
-    public AmazonSimpleEmailService getAmazonSilmpleEmailService(){
+    public AmazonSimpleEmailService getAmazonSimpleEmailService(){
         return AmazonSimpleEmailServiceClientBuilder.standard().withCredentials(awsCredentialsProvider()).withRegion(Regions.EU_CENTRAL_1).build();
     }
 
