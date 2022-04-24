@@ -16,9 +16,6 @@ export class LoginComponent implements OnInit {
   error: string = "Email or password invalid";
 
   constructor(
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute,
-    private router: Router,
     private authService: AuthService
   ) { }
 
@@ -29,7 +26,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  submit(){
+  login(){
 
   }
 
