@@ -1,8 +1,13 @@
 export class Appointment{
     id: string;
-    time: number;
+    time: BigInt;
     companyId: string;
     userId: string;
 
-    constructor(){}
+    constructor(){
+        this.id = null;
+        this.time = null;
+        this.companyId = null;
+        this.userId = null;
+    }
 }

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { User } from './models/user';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'appointment-booking-frontend';
+
+  constructor(){
+    sessionStorage.setItem("user", JSON.stringify(new User()))
+  }
+
 }

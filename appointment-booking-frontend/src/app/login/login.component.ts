@@ -11,23 +11,42 @@ import { AuthService } from '../services/auth.service';
 })
 export class LoginComponent implements OnInit {
 
-  user: User = null;
-  form: FormGroup;
-  error: string = "Email or password invalid";
+  user: User = new User();
+  error: string = "Email or password invalid. Please try again.";
+  email = new FormControl('', [Validators.required, Validators.email]);
+  password = new FormControl('', [Validators.required]);
 
-  constructor(
-    private authService: AuthService
-  ) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      email: new FormControl(''),
-      password: new FormControl(''),
-    });
   }
 
   login(){
+    this.authService.loginUser(this.user).subscribe((returnedUser: any) =>{
+      this.user = JSON.parse(returnedUser)
+    })
 
+    if(this.user.id == null){
+      window.alert(this.error)
+      this.user.email = null;
+      this.user.password = null;
+    }
+    else{
+      sessionStorage.setItem("user", JSON.stringify(this.user));
+      this.router.navigate([''])
+    }
+
+  }
+
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a value';
+    }
+    if (this.password.hasError('required')) {
+      return 'You must enter a value';
+    }
+
+    return this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
 }
