@@ -12,7 +12,7 @@ import { AuthService } from '../services/auth.service';
 export class LoginComponent implements OnInit {
 
   user: User = new User();
-  error: string = "Email or password invalid. Please try again.";
+  error: string = "Email or password incorrect. Please try again.";
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
@@ -22,19 +22,22 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.authService.loginUser(this.user).subscribe((returnedUser: any) =>{
-      this.user = JSON.parse(returnedUser)
+    this.authService.loginUser(this.user).subscribe((returnedUser: User) =>{
+      this.user = returnedUser
+      console.log(this.user);
+
+      if(this.user.id == null){
+        window.alert(this.error)
+        this.user.email = null;
+        this.user.password = null;
+      }
+      else{
+        sessionStorage.setItem("user", JSON.stringify(this.user));
+        this.router.navigate([''])
+      }
     })
 
-    if(this.user.id == null){
-      window.alert(this.error)
-      this.user.email = null;
-      this.user.password = null;
-    }
-    else{
-      sessionStorage.setItem("user", JSON.stringify(this.user));
-      this.router.navigate([''])
-    }
+    
 
   }
 

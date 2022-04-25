@@ -24,7 +24,7 @@
                </mat-form-field>
                <mat-form-field class="full-width" *ngIf="user.role === 'Company'">
                   <mat-label>Company name</mat-label>
-                  <input  matInput  placeholder="Company name" [formControl]="companyName" name="companyName" [(ngModel)]="user.name" required>
+                  <input  matInput  placeholder="Company name" [formControl]="companyName" name="companyName" [(ngModel)]="user.companyName" required>
                   <mat-error *ngIf="companyName.invalid">{{getErrorMessage()}}</mat-error>
                </mat-form-field>
                <mat-form-field class="full-width">

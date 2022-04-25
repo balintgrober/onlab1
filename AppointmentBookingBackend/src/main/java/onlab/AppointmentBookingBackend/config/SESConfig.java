@@ -21,11 +21,11 @@ public class SESConfig {
     private String amazonSecretKey;
 
     public AWSCredentialsProvider awsCredentialsProvider() {
-        return new AWSStaticCredentialsProvider(amazonAWSCredentials());
+        return new AWSStaticCredentialsProvider(amazonAWSCredentialsSES());
     }
 
     @Bean
-    public AWSCredentials amazonAWSCredentials() {
+    public AWSCredentials amazonAWSCredentialsSES() {
         return new BasicAWSCredentials(amazonAccessKey, amazonSecretKey);
     }
 

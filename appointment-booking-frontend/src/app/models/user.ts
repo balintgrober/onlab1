@@ -2,7 +2,7 @@ export class User{
     id: string;
     email: string;
     password: string;
-    name: string;
+    companyName: string;
     firstName: string;
     lastName: string;
     role: string;
@@ -11,7 +11,7 @@ export class User{
         this.id = null;
         this.email = null;
         this.password = null;
-        this.name = null;
+        this.companyName = null;
         this.firstName = null;
         this.lastName = null;
         this.email = null;

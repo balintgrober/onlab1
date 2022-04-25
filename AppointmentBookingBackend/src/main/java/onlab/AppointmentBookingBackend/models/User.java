@@ -95,6 +95,7 @@ public class User {
                 "id='" + id + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", companyName='" + companyName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", appointmentId='" + appointmentId + '\'' +
