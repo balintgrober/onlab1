@@ -1,11 +1,15 @@
 <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <!--  <span>HOME</span> -->
-       <span><a href="/">HOME</a></span>
-       <a mat-button routerLink="/dashboard" *ngIf="user.id != null">Dashboard</a>
+       <span>My Application</span>
+       <a mat-button routerLink="/">Home</a>
+       <a mat-button routerLink="/dashboard" *ngIf="user.id != null && user.role == 'Company'">Dashboard</a>
+       <a mat-button routerLink="/client-dashboard" *ngIf="user.id != null && user.role == 'Client'">Dashboard</a>
+       <a mat-button routerLink="/new-appointment" *ngIf="user.id != null && user.role === 'Client'">Book new appointment</a>
        <span class="spacer"></span>
        <a mat-button routerLink="/register" *ngIf="!isLoggedin">Register</a>
        <a mat-button routerLink="/login" *ngIf="!isLoggedin">Login</a>
-       <a mat-button (clicked)="logout()" routerLink="" *ngIf="isLoggedin">Log out</a>
+       <span *ngIf="user.id != null && user.role == 'Client'">{{user.firstName}}</span>
+       <span *ngIf="user.id != null && user.role == 'Company'">{{user.companyName}}</span>
+       <a mat-button (click)="logout()" routerLink="" *ngIf="isLoggedin">Log out</a>
     </mat-toolbar-row>
 </mat-toolbar>

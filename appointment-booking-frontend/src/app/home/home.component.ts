@@ -15,14 +15,16 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem("user"));
+    this.user = JSON.parse(localStorage.getItem("user"));
     if(this.user.id != null){
       this.isLoggedin = true;
     }
+    
   }
 
   logout(){
-    sessionStorage.setItem("user", JSON.stringify(new User()));
+    this.user = new User();
+    localStorage.removeItem("user");
     this.isLoggedin = false;
     this.router.navigate(['']);
   }

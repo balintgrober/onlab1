@@ -8,9 +8,11 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './material.module';
+import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
+import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
+import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 
 
 @NgModule({
@@ -19,8 +21,10 @@ import { MaterialModule } from './material.module';
     LoginComponent,
     RegisterComponent,
     DashboardComponent,
-    NavMenuComponent,
-    HomeComponent
+    HomeComponent,
+    NewAppointmentComponent,
+    CreateAppointmentComponent,
+    ClientDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -2,8 +2,8 @@ export class Mail{
     to: string;
     userName: string;
     companyName: string;
-    timestamp: BigInt;
-    timeEdited: BigInt;
+    timestamp: number;
+    timeEdited: number;
 
     constructor(){
         this.to = null;

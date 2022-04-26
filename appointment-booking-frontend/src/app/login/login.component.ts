@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         this.user.password = null;
       }
       else{
-        sessionStorage.setItem("user", JSON.stringify(this.user));
+        localStorage.setItem("user", JSON.stringify(this.user));
         this.router.navigate([''])
       }
     })

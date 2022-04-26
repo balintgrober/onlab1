@@ -1,13 +1,15 @@
+import { User } from "./user";
+
 export class Appointment{
     id: string;
-    time: BigInt;
-    companyId: string;
-    userId: string;
+    time: number;
+    company: User;
+    user: User;
 
     constructor(){
         this.id = null;
         this.time = null;
-        this.companyId = null;
-        this.userId = null;
+        this.company = new User();
+        this.user = new User();
     }
 }

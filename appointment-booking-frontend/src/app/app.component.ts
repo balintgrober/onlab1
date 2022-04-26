@@ -11,7 +11,9 @@ export class AppComponent {
   title = 'appointment-booking-frontend';
 
   constructor(){
-    sessionStorage.setItem("user", JSON.stringify(new User()))
+    if(localStorage.getItem("user") === null){
+      localStorage.setItem("user", JSON.stringify(new User()));
+    }
   }
 
 }
