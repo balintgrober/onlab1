@@ -22,6 +22,10 @@ export class ClientDashboardComponent implements OnInit {
   constructor(private appointmentService: AppointmentService) { }
 
   ngOnInit(): void {
+    if(!JSON.parse(localStorage.getItem("reloadedAfterLogin"))){
+      localStorage.setItem("reloadedAfterLogin", JSON.stringify(true));
+      window.location.reload();
+    }
     this.user = JSON.parse(localStorage.getItem("user"));
     this.appointmentService.getAppointments().subscribe((returned_appointments: Appointment[]) => {
       this.appointments = returned_appointments;
@@ -30,7 +34,7 @@ export class ClientDashboardComponent implements OnInit {
       for (let index = 0; index < this.appointments.length; index++) {
         const element = this.appointments[index];
         this.dashboardData.companyName = element.company.companyName;
-        this.dashboardData.date = new Date(element.time);
+        this.dashboardData.date = new Date(element.dateTime);
         this.dashboardData.appointment = element;
         this.dataSource.push(this.dashboardData);
       }

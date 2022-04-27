@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../models/user';
 import { AuthService } from '../services/auth.service';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   email = new FormControl('', [Validators.required, Validators.email]);
   password = new FormControl('', [Validators.required]);
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private stateService: StateService) { }
 
   ngOnInit(): void {
   }
@@ -27,13 +28,19 @@ export class LoginComponent implements OnInit {
       console.log(this.user);
 
       if(this.user.id == null){
-        window.alert(this.error)
+        window.alert(this.error);
         this.user.email = null;
         this.user.password = null;
       }
       else{
         localStorage.setItem("user", JSON.stringify(this.user));
-        this.router.navigate([''])
+        localStorage.setItem("reloadedAfterLogin", JSON.stringify(false))
+        if(this.user.role === 'Company'){
+          this.router.navigate(['/dashboard']);
+        }
+        if(this.user.role === 'Client'){
+          this.router.navigate(['/client-dashboard']);
+        }
       }
     })
 

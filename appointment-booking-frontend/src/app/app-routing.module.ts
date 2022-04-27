@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent},
   { path: 'new-appointment', component: NewAppointmentComponent},
   { path: 'create', component: CreateAppointmentComponent },
-  { path: 'client-dashboard', component: ClientDashboardComponent}
+  { path: 'client-dashboard', component: ClientDashboardComponent },
+  { path: 'edit', component: EditAppointmentComponent }
 ];
 
 @NgModule({

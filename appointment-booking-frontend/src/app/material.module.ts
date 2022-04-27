@@ -36,6 +36,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
 const MATERIAL_MODULES = [
 MatAutocompleteModule,
 MatButtonModule,
@@ -73,7 +74,8 @@ A11yModule,
 MatCommonModule,
 ObserversModule,
 MatRadioModule,
-MatExpansionModule
+MatExpansionModule,
+MatNativeDateModule
 ];
 
 @NgModule({

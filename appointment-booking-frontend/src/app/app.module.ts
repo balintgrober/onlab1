@@ -13,6 +13,7 @@ import { MaterialModule } from './material.module';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
+import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { ClientDashboardComponent } from './client-dashboard/client-dashboard.co
     HomeComponent,
     NewAppointmentComponent,
     CreateAppointmentComponent,
-    ClientDashboardComponent
+    ClientDashboardComponent,
+    EditAppointmentComponent,
   ],
   imports: [
     BrowserModule,
