@@ -68,11 +68,11 @@ public class EmailService {
                         + "</head>\n"
                         + "<body style=\"background: whitesmoke; padding: 30px; height: 100%\">\n"
                         + "<h5 style=\"font-size: 18px; margin-bottom: 6px\">Dear " + maildata.getUserName() + "," + "</h5>\n"
-                        + "<p style=\"font-size: 16px; font-weight: 500\">You have deleted your appointment on " + date.toString()+ " at " + maildata.getCompanyName() + "</p>\n"
+                        + "<p style=\"font-size: 16px; font-weight: 500\">You or the service provider have deleted your appointment on " + date.toString()+ " at " + maildata.getCompanyName() + "</p>\n"
                         + "</body>\n"
                         + "</html>";
 
-        
+
         String subject = "Deleted Appointment";
 
         try {

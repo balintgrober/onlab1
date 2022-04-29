@@ -1,1 +1,25 @@
-<p>new-appointment works!</p>
+<mat-toolbar>
+    <span>Book a new appointment</span>
+</mat-toolbar>
+<mat-card class="my-card">
+    <mat-card-content>
+       <form class="my-form">
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a service provider</mat-label>
+            <mat-select [(ngModel)]="companyid" name="companyid" (selectionChange)="updateList()">
+              <mat-option *ngFor="let company of companies" [value]="company.id">
+                {{company.companyName}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+       </form>
+       <mat-selection-list #dates_list [(ngModel)]="picked_date" [multiple]="false">
+        <mat-list-option *ngFor="let date of dates"  [value]="date">
+          {{date}}
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-card-content>
+    <mat-card-actions>
+       <button mat-raised-button (click)="book()" color="primary">Book</button>
+    </mat-card-actions>
+</mat-card>

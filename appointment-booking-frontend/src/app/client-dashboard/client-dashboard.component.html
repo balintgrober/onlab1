@@ -1,6 +1,5 @@
-<p>client-dashboard works!</p>
 <div class="appointment_table" >
-    <table mat-table [dataSource]="dataSource">
+    <table mat-table [dataSource]="dataSource" *ngIf="dataSource.length != 0">
         
         <ng-container matColumnDef="Company name">
             <th mat-header-cell *matHeaderCellDef> Company name </th>
@@ -10,13 +9,13 @@
     
         <ng-container matColumnDef="Date">
             <th mat-header-cell *matHeaderCellDef> Date </th>
-            <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.date.toLocaleString()}} </td>
         </ng-container>
 
         <ng-container matColumnDef="Actions">
             <th mat-header-cell *matHeaderCellDef> Actions </th>
             <td mat-cell *matCellDef="let element"> 
-                <button mat-raised-button color="accent" (click)="delete(element)">
+                <button mat-raised-button color="warn" (click)="delete(element)">
                     Delete
                 </button> 
              </td>

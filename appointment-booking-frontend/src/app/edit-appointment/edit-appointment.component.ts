@@ -77,12 +77,14 @@ export class EditAppointmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.appointmentToEdit = this.stateService.appointmentToEdit;
+    this.mailData.timestamp = this.appointmentToEdit.dateTime;
     this.newAppointment = this.appointmentToEdit;
     this.oldDate = new Date(this.appointmentToEdit.dateTime).toLocaleString();
   }
 
 
   edit(){
+    this.newDate.setHours(this.newTime.getHours());
     this.newDate.setMinutes(this.newTime.getMinutes());
     this.newDate.setSeconds(this.newTime.getSeconds());
     this.newDate.setMilliseconds(this.newTime.getMilliseconds());
@@ -92,8 +94,9 @@ export class EditAppointmentComponent implements OnInit {
         this.mailData.companyName = this.newAppointment.company.companyName;
         this.mailData.userName = this.newAppointment.user.firstName;
         this.mailData.to = environment.email_to;
-        this.mailData.timestamp = this.appointmentToEdit.dateTime;
         this.mailData.timeEdited = this.newAppointment.dateTime;
+        console.log(this.mailData.timestamp)
+        console.log(this.mailData.timeEdited)
         this.mailService.sendEditedEmail(this.mailData).subscribe(() => {
           this.router.navigate(['/dashboard']);
         });
