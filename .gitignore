@@ -57,3 +57,4 @@ build/
 .vscode/
 
 application.properties
+appointment-booking-frontend/src/environments/environment.ts
