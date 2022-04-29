@@ -17,12 +17,12 @@ export class AppointmentService {
   }
 
   getAppointment(id: string): Observable<Appointment>{
-    let url = environment.apiBaseUrl + "/appointments/${id}";
+    let url = environment.apiBaseUrl + `/appointments/${id}`;
     return this.http.get<Appointment>(url).pipe(catchError(this.handleError));
   }
 
   deleteAppointment(id: string): Observable<Appointment>{
-    let url = environment.apiBaseUrl + '/appointments/${id}';
+    let url = environment.apiBaseUrl + `/appointments/${id}`;
     return this.http.delete<Appointment>(url).pipe(catchError(this.handleError));
   }
 
@@ -32,7 +32,7 @@ export class AppointmentService {
   }
 
   putAppointment(appointment: Appointment): Observable<Appointment>{
-    let url = environment.apiBaseUrl + '/appointments/${id}';
+    let url = environment.apiBaseUrl + `/appointments/${appointment.id}`;
     return this.http.put<Appointment>(url, appointment).pipe(catchError(this.handleError));
   }
 

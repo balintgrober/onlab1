@@ -1,1 +1,32 @@
 <p>edit-appointment works!</p>
+<mat-toolbar>
+    <span>Edit appointment date</span>
+</mat-toolbar>
+<mat-card class="my-card">
+     <mat-card-content>
+        <form class="my-form">
+            <mat-form-field appearance="fill">
+                <mat-label>Old date</mat-label>
+                <input matInput  [(ngModel)] = "oldDate" name="oldDate" [disabled]="true">
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker3" [(ngModel)] = "newDate" name="newDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Pick time:</mat-label>
+                <mat-select [(ngModel)]="newTime" name="time">
+                  <mat-option *ngFor="let t of times" [value]="t.value">
+                    {{t.viewValue}}
+                  </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+     </mat-card-content>
+     <mat-card-actions>
+        <button mat-raised-button (click)="edit()" color="primary">Edit</button>
+     </mat-card-actions>
+</mat-card>

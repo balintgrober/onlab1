@@ -4,6 +4,7 @@ import com.amazonaws.services.simpleemail.AmazonSimpleEmailService;
 import com.amazonaws.services.simpleemail.model.*;
 import onlab.AppointmentBookingBackend.models.Mail;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -13,6 +14,9 @@ public class EmailService {
 
     @Autowired
     private AmazonSimpleEmailService amazonSimpleEmailService;
+
+    @Value("${email_from}")
+    private String from;
 
     public void sendBookedEmail(Mail maildata){
 
@@ -31,7 +35,7 @@ public class EmailService {
                         + "</body>\n"
                         + "</html>";
 
-        String from = "";
+
         String subject = "New Appointment";
 
         try {
@@ -68,7 +72,7 @@ public class EmailService {
                         + "</body>\n"
                         + "</html>";
 
-        String from = "";
+        
         String subject = "Deleted Appointment";
 
         try {
@@ -105,7 +109,6 @@ public class EmailService {
                         + "</body>\n"
                         + "</html>";
 
-        String from = "";
         String subject = "Rescheduled Appointment";
 
         try {
