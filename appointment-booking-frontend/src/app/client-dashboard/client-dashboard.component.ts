@@ -16,7 +16,7 @@ import { MailService } from '../services/mail.service';
 export class ClientDashboardComponent implements OnInit {
 
 
-  displayedColumns: string[] = ['Company name', 'Date', 'Actions']
+  displayedColumns: string[] = ['Company name', 'Date', 'Note', 'Actions']
   user: User = new User();
   appointments: Appointment[] = [];
   dataSource: ClientDashboardData[] = [];
@@ -47,7 +47,7 @@ export class ClientDashboardComponent implements OnInit {
         this.dashboardData = new ClientDashboardData();
       }
       this.dataSource = this.dataSource.sort((a, b) => a.date.getTime() - b.date.getTime());
-      console.log(this.dataSource);
+      
     });
   }
 

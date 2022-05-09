@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
   login(){
     this.authService.loginUser(this.user).subscribe((returnedUser: User) =>{
       this.user = returnedUser
-      console.log(this.user);
 
       if(this.user.id == null){
         window.alert(this.error);

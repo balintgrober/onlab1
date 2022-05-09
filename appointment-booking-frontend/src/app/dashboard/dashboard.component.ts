@@ -1,8 +1,10 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ChartComponent } from 'ng-apexcharts';
 import { environment } from 'src/environments/environment';
 import { Appointment } from '../models/appointment';
+import { ChartOptions } from '../models/chartOptions';
 import { CompanyDashboardData } from '../models/CompanyDashboardData';
 import { Mail } from '../models/mail';
 import { User } from '../models/user';
@@ -18,11 +20,16 @@ import { UserService } from '../services/user.service';
 })
 export class DashboardComponent implements OnInit{
 
-  displayedColumns: string[] = ['First name', 'Last name', 'Email', 'Date', 'Actions']
+  @ViewChild('chart') chart: ChartComponent;
+  chartOptions: Partial<ChartOptions>;
+
+  displayedColumns: string[] = ['First name', 'Last name', 'Email', 'Date', 'Note', 'Actions']
   user: User = new User();
   appointments: Appointment[] = [];
   dataSource: CompanyDashboardData[] = [];
   dashboardData: CompanyDashboardData = new CompanyDashboardData();
+  reserved: number = 0;
+  free: number = 0;
 
   constructor(private appointmentService: AppointmentService, private router: Router, private stateService: StateService, private mailService: MailService) { }
 
@@ -59,6 +66,38 @@ export class DashboardComponent implements OnInit{
         }
       }
       this.dataSource = this.dataSource.sort((a, b) => a.date.getTime() - b.date.getTime());
+      for (let index = 0; index < this.dataSource.length; index++) {
+        const element = this.dataSource[index];
+        if(element.appointment.user.id === null){
+          this.free++;
+        }
+        else if(element.appointment.user.id !== null){
+          this.reserved++;
+        }
+      }
+
+      this.chartOptions = {
+        series: [this.free, this.reserved],
+        chart: {
+          width: 380,
+          type: "pie"
+        },
+        labels: ["Free", "Reserved"],
+        responsive: [
+          {
+            breakpoint: 480,
+            options: {
+              chart: {
+                width: 200
+              },
+              legend:{
+                position: "bottom"
+              }
+            }
+          }
+        ]
+      };
+
     });
     
   }
@@ -73,8 +112,14 @@ export class DashboardComponent implements OnInit{
         mailData.to = environment.email_to;
         mailData.userName = data.appointment.user.firstName;
         this.mailService.sendDeletedemail(mailData).subscribe();
+        this.reserved--;
+        this.free++;
       }
-      
+      else{
+        this.free--;
+      }
+
+      this.updateSeries();
     });
     
   }
@@ -82,6 +127,10 @@ export class DashboardComponent implements OnInit{
   edit(data: CompanyDashboardData){
     this.stateService.appointmentToEdit = data.appointment;
     this.router.navigate(['/edit']);
+  }
+
+  updateSeries(){
+    this.chartOptions.series = [this.free, this.reserved];
   }
 
 }

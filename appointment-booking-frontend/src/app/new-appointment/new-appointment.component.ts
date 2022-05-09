@@ -21,6 +21,7 @@ export class NewAppointmentComponent implements OnInit {
   dates: string[] = [];
   appointments: Appointment[] = [];
   picked_date: string = "";
+  note: string = "";
 
   constructor(private userService: UserService, private appointmentService: AppointmentService, private router: Router, private mailService: MailService) { }
 
@@ -32,6 +33,7 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   updateList(){
+    this.dates = [];
     this.appointmentService.getAppointments().subscribe((returned_appointments) => {
       returned_appointments = returned_appointments.sort((a, b) => a.dateTime - b.dateTime);
       this.appointments = returned_appointments.filter((appointment) => appointment.company.id == this.companyid && appointment.user.id == null);
@@ -44,11 +46,9 @@ export class NewAppointmentComponent implements OnInit {
   }
 
   book(){
-    console.log(this.companyid);
-    console.log(this.picked_date[0]);
     let picked_appointment = this.appointments.filter((appointment) => new Date(appointment.dateTime).toLocaleString() == this.picked_date[0]);
     picked_appointment[0].user = this.user;
-    console.log(picked_appointment);
+    picked_appointment[0].note = this.note;
     this.appointmentService.putAppointment(picked_appointment[0]).subscribe(()=> {
       let mailData = new Mail();
       mailData.to = environment.email_to;

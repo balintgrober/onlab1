@@ -14,6 +14,7 @@ import { NewAppointmentComponent } from './new-appointment/new-appointment.compo
 import { CreateAppointmentComponent } from './create-appointment/create-appointment.component';
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { EditAppointmentComponent } from './edit-appointment/edit-appointment.co
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

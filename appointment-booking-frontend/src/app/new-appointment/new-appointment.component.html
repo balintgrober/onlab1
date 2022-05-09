@@ -4,7 +4,8 @@
 <mat-card class="my-card">
     <mat-card-content>
        <form class="my-form">
-        <mat-form-field appearance="fill">
+         <div>
+          <mat-form-field appearance="fill">
             <mat-label>Choose a service provider</mat-label>
             <mat-select [(ngModel)]="companyid" name="companyid" (selectionChange)="updateList()">
               <mat-option *ngFor="let company of companies" [value]="company.id">
@@ -12,6 +13,13 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
+         </div>
+        <div>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Leave a note</mat-label>
+            <textarea matInput  [(ngModel)]="note" name="note"></textarea>
+          </mat-form-field>
+        </div>          
        </form>
        <mat-selection-list #dates_list [(ngModel)]="picked_date" [multiple]="false">
         <mat-list-option *ngFor="let date of dates"  [value]="date">

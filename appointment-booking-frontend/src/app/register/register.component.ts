@@ -26,7 +26,6 @@ export class RegisterComponent implements OnInit {
 
 
   register(){
-    console.log(this.user);
     this.authService.registerUser(this.user).subscribe();
     window.alert("Registration successful, please log in.");
     this.router.navigate(['/login'])
