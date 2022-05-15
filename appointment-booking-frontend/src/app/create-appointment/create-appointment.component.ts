@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Appointment } from '../models/appointment';
+import { Location } from '../models/location';
 import { User } from '../models/user';
 import { AppointmentService } from '../services/appointment.service';
 
@@ -15,6 +16,22 @@ export class CreateAppointmentComponent implements OnInit {
   date: Date = new Date();
   time: Date = new Date();
   appointment: Appointment = new Appointment();
+
+  location: Location = new Location();
+
+  mapOptions: google.maps.MapOptions = {
+    center: { lat: 47.48133557545227, lng: 19.05561282306601 },
+    zoom: 14,
+    disableDoubleClickZoom: true
+  }
+ 
+  place_marker = new google.maps.Marker({
+    position: {
+      lat: 0,
+      lng: 0
+    },
+
+  });
 
 
   times: any[] = [
@@ -84,13 +101,16 @@ export class CreateAppointmentComponent implements OnInit {
     this.date.setMilliseconds(this.time.getMilliseconds());
     this.appointment.dateTime = this.date.getTime();
     this.appointment.company = this.company;
+    this.location.lat = this.place_marker.getPosition().lat();
+    this.location.lng = this.place_marker.getPosition().lng();
+    this.appointment.location = this.location;
     this.appointmentService.postAppointment(this.appointment).subscribe((_) =>{
       this.router.navigate(['/dashboard']);
     })
   }
 
-  getErrorMessage(){
-
+  place_marker_on_map(event: google.maps.MapMouseEvent){
+    this.place_marker.setPosition(event.latLng);
   }
 
 }

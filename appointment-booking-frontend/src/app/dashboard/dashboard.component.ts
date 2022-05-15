@@ -11,7 +11,6 @@ import { User } from '../models/user';
 import { AppointmentService } from '../services/appointment.service';
 import { MailService } from '../services/mail.service';
 import { StateService } from '../services/state.service';
-import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-dashboard',

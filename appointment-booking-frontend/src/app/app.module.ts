@@ -15,6 +15,7 @@ import { CreateAppointmentComponent } from './create-appointment/create-appointm
 import { ClientDashboardComponent } from './client-dashboard/client-dashboard.component';
 import { EditAppointmentComponent } from './edit-appointment/edit-appointment.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     HttpClientModule,
     MaterialModule,
     BrowserAnimationsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    GoogleMapsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

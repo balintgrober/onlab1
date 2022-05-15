@@ -21,7 +21,11 @@
             </mat-form-field>
         </form>
      </mat-card-content>
+     <div>Select location:</div>
+     <google-map [options]="mapOptions" (mapDblclick)="place_marker_on_map($event)">
+       <map-marker *ngIf="place_marker.getPosition().lat() !== 0 && place_marker.getPosition().lng() !== 0" [position]="place_marker.getPosition()"></map-marker>
+     </google-map>
      <mat-card-actions>
-        <button mat-raised-button (click)="create()" color="primary">Create</button>
-     </mat-card-actions>
+      <button mat-raised-button (click)="create()" color="primary">Create</button>
+   </mat-card-actions>
   </mat-card>
