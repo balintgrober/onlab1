@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { NewAppointmentComponent } from './new-appointment/new-appointment.component';
 import { RegisterComponent } from './register/register.component';
+import { ShowLocationComponent } from './show-location/show-location.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   { path: 'new-appointment', component: NewAppointmentComponent},
   { path: 'create', component: CreateAppointmentComponent },
   { path: 'client-dashboard', component: ClientDashboardComponent },
-  { path: 'edit', component: EditAppointmentComponent }
+  { path: 'edit', component: EditAppointmentComponent },
+  { path: 'show-location', component: ShowLocationComponent}
 ];
 
 @NgModule({

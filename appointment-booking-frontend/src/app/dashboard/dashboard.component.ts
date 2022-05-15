@@ -132,4 +132,9 @@ export class DashboardComponent implements OnInit{
     this.chartOptions.series = [this.free, this.reserved];
   }
 
+  show_location(data: CompanyDashboardData){
+    this.stateService.locationToShow = data.appointment.location;
+    this.router.navigate(['/show-location'])
+  }
+
 }

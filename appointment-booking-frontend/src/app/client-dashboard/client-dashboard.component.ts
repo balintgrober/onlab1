@@ -7,6 +7,7 @@ import { Mail } from '../models/mail';
 import { User } from '../models/user';
 import { AppointmentService } from '../services/appointment.service';
 import { MailService } from '../services/mail.service';
+import { StateService } from '../services/state.service';
 
 @Component({
   selector: 'app-client-dashboard',
@@ -23,7 +24,7 @@ export class ClientDashboardComponent implements OnInit {
   dashboardData: ClientDashboardData = new ClientDashboardData();
 
 
-  constructor(private appointmentService: AppointmentService, private mailService: MailService) { }
+  constructor(private appointmentService: AppointmentService, private mailService: MailService, private stateService: StateService, private router: Router) { }
 
   ngOnInit(): void {
     if(!JSON.parse(localStorage.getItem("reloadedAfterLogin"))){
@@ -65,6 +66,11 @@ export class ClientDashboardComponent implements OnInit {
       }
       
     });
+  }
+
+  show_location(data: ClientDashboardData){
+    this.stateService.locationToShow = data.appointment.location;
+    this.router.navigate(['/show-location']);
   }
 
 }
