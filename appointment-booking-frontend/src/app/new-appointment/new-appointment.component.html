@@ -19,9 +19,13 @@
             <mat-label>Leave a note</mat-label>
             <textarea matInput  [(ngModel)]="note" name="note"></textarea>
           </mat-form-field>
-        </div>          
+        </div>
+                
        </form>
-       <mat-selection-list #dates_list [(ngModel)]="picked_date" [multiple]="false">
+       <google-map [options]="mapOptions">
+				 <map-marker *ngIf="place_marker.getPosition().lat() !== 0 && place_marker.getPosition().lng() !== 0" [position]="place_marker.getPosition()"></map-marker>
+			 </google-map>
+       <mat-selection-list #dates_list [(ngModel)]="picked_date" [multiple]="false" (selectionChange)="onSelection($event)">
         <mat-list-option *ngFor="let date of dates"  [value]="date">
           {{date}}
         </mat-list-option>

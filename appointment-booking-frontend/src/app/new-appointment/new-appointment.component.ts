@@ -23,6 +23,20 @@ export class NewAppointmentComponent implements OnInit {
   picked_date: string = "";
   note: string = "";
 
+  mapOptions: google.maps.MapOptions = {
+    center: { lat: 47.48133557545227, lng: 19.05561282306601 },
+    zoom: 14,
+    disableDoubleClickZoom: true
+  }
+
+  place_marker = new google.maps.Marker({
+    position: {
+      lat: 0,
+      lng: 0
+    },
+
+  });
+
   constructor(private userService: UserService, private appointmentService: AppointmentService, private router: Router, private mailService: MailService) { }
 
   ngOnInit(): void {
@@ -60,6 +74,14 @@ export class NewAppointmentComponent implements OnInit {
       });
       
     });
+  }
+
+  onSelection(event: any){
+    let picked_appointment = this.appointments.filter((appointment) => new Date(appointment.dateTime).toLocaleString() == this.picked_date[0]);
+    let latlng = new google.maps.LatLng(picked_appointment[0].location.lat, picked_appointment[0].location.lng);
+    this.mapOptions.center.lat = picked_appointment[0].location.lat;
+    this.mapOptions.center.lng = picked_appointment[0].location.lng;
+    this.place_marker.setPosition(latlng);
   }
 
 }
